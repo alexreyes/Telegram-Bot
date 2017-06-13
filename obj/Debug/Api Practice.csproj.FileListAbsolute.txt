@@ -1,0 +1,12 @@
+c:\users\alex.reyes\documents\visual studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Api Practice.exe.config
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Api Practice.exe
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Api Practice.pdb
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Newtonsoft.Json.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Telegram.Bot.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Newtonsoft.Json.xml
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\Telegram.Bot.xml
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\obj\Debug\Api Practice.csprojResolveAssemblyReference.cache
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\obj\Debug\Api Practice.exe
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\obj\Debug\Api Practice.pdb
