@@ -8,26 +8,21 @@ namespace Api_Practice
 {
     class Program
     {
-        string chatId = "164850555";
         static void Main(string[] args)
         {
-            Database database = new Database();
-            WeatherApiClient weatherClient = new WeatherApiClient();
 
             testApiAsync();
-            weatherClient.GetWeatherForecast();
-            Console.WriteLine(weatherClient.getTemp());
             Console.ReadLine();
-
         }
         static async void testApiAsync()
         {
+            WeatherApiClient weatherClient = new WeatherApiClient();
+
             var Bot = new Telegram.Bot.TelegramBotClient("267703378:AAHaHqsitEahdo2j8F3F4uz0DGiu6aXQvL4");
             var me = await Bot.GetMeAsync();
 
-            //var t = await Bot.SendTextMessage("164850555", "");
-            Console.WriteLine("Hello my name is " + me.FirstName);
-            Console.ReadLine();
+            var message = await Bot.SendTextMessage("164850555", weatherClient.getTemp());
+            Console.WriteLine("Message Sent " + me.FirstName);
         }
     }
 }

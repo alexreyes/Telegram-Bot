@@ -76,7 +76,7 @@ namespace Api_Practice
 
         public void doWeatherSearch()
         {
-            weatherFormatChoice(choice, root);
+            weatherFormatChoice(choice, root, true);
 
             ExtraStuff convertTime = new ExtraStuff();
 
@@ -119,9 +119,9 @@ namespace Api_Practice
             }
 
 
-            return "" + weatherFormatChoice("f", tempRoot);
+            return "" + weatherFormatChoice("f", tempRoot, false);
         }
-        public double weatherFormatChoice(string choice, WeatherData.CurrentRoot theRoot)
+        public string weatherFormatChoice(string choice, WeatherData.CurrentRoot theRoot, Boolean consoleWeatherPart)
         {
             ExtraStuff convertTempTo = new ExtraStuff();
 
@@ -132,10 +132,15 @@ namespace Api_Practice
 
                 double fahrenheit = convertTempTo.Fahrenheit(kelvin);
 
-                Console.WriteLine("Weather outside is: {0} °F", fahrenheit);
-                Console.WriteLine("Temperature min: {0} °F. Temperature max: {1} °F", convertTempTo.Fahrenheit(theRoot.main.temp_min), convertTempTo.Fahrenheit(theRoot.main.temp_max));
+                string weatherOutsideF = ("Weather outside is: " + fahrenheit + "°F");
 
-                return fahrenheit;
+                if (consoleWeatherPart)
+                {
+                    Console.WriteLine(weatherOutsideF);
+                    Console.WriteLine("Temperature min: {0} °F. Temperature max: {1} °F", convertTempTo.Fahrenheit(theRoot.main.temp_min), convertTempTo.Fahrenheit(theRoot.main.temp_max));
+                }
+
+                return weatherOutsideF;
             }
 
             // Celcius
@@ -145,10 +150,12 @@ namespace Api_Practice
 
                 double celcius = convertTempTo.Celcius(kelvin);
 
+                string weatherOutsideC = ("Weather outside is: " + celcius);
+
                 Console.WriteLine("Weather outside is: {0}°", celcius);
                 Console.WriteLine("Temperature min: {0}°. Temperature max: {1}°", convertTempTo.Celcius(theRoot.main.temp_min), convertTempTo.Celcius(theRoot.main.temp_max));
 
-                return celcius;
+                return weatherOutsideC;
 
             }
             // Kelvin
@@ -156,15 +163,17 @@ namespace Api_Practice
             {
                 double kelvin = theRoot.main.temp;
 
-                Console.WriteLine("Weather outside is: {0}", kelvin);
+                string weatherOutsideC = ("Weather outside is: { 0} °F" + kelvin);
+
+                Console.WriteLine(weatherOutsideC);
                 Console.WriteLine("Temperature min: {0}. Temperature max: {1}", theRoot.main.temp_min, theRoot.main.temp_max);
 
-                return kelvin;
+                return weatherOutsideC;
 
             }
             else
             {
-                return 0.0;
+                return "";
             }
         }
         public static Stream GenerateStreamFromString(string s)
