@@ -23,6 +23,7 @@ namespace Api_Practice
 
             var message = await Bot.SendTextMessage("164850555", weatherClient.getTemp());
             Console.WriteLine("Message Sent " + me.FirstName);
+            Console.WriteLine(weatherClient.getTemp());
         }
     }
 }
