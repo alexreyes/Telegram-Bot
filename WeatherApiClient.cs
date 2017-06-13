@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Net;
+using System.Data.SQLite;
 using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Api_Practice
 {
@@ -13,8 +17,9 @@ namespace Api_Practice
         string zipCode = "";
         string choice = "";
         List<string> list = new List<string>();
-
+        string jsonCurrentWeather = AccessWebPage.HttpGet("http://api.openweathermap.org/data/2.5/weather?q=" + "17601" + "&APPID=47992ad1b3261b707350bf13aac83023");
         WeatherData.CurrentRoot root = new WeatherData.CurrentRoot();
+        DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(WeatherData.CurrentRoot));
 
         public void GetWeatherForecast()
         {
@@ -29,9 +34,6 @@ namespace Api_Practice
             {
 
             }
-
-            string jsonCurrentWeather = AccessWebPage.HttpGet("http://api.openweathermap.org/data/2.5/weather?q=" + zipCode + "&APPID=47992ad1b3261b707350bf13aac83023");
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(WeatherData.CurrentRoot));
 
             using (Stream s = GenerateStreamFromString(jsonCurrentWeather))
             {
@@ -70,25 +72,8 @@ namespace Api_Practice
             {
                 doWeatherSearch();
             }
-
-            string finalReadLine = Console.ReadLine();
-
-            if (finalReadLine == "help")
-            {
-                ExtraStuff helpPage = new ExtraStuff();
-                helpPage.helpPage();
-            }
         }
 
-        static void asyncClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(WeatherData));
-
-            using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(e.Result)))
-            {
-                var weatherData = (WeatherData)serializer.ReadObject(ms);
-            }
-        }
         public void doWeatherSearch()
         {
             weatherFormatChoice(choice, root);
@@ -125,7 +110,18 @@ namespace Api_Practice
             }
         }
 
-        public void weatherFormatChoice(string choice, WeatherData.CurrentRoot theRoot)
+        public string getTemp() {
+            WeatherData.CurrentRoot tempRoot = new WeatherData.CurrentRoot();
+
+            using (Stream s = GenerateStreamFromString(jsonCurrentWeather))
+            {
+                tempRoot = (WeatherData.CurrentRoot)ser.ReadObject(s);
+            }
+
+
+            return "" + weatherFormatChoice("f", tempRoot);
+        }
+        public double weatherFormatChoice(string choice, WeatherData.CurrentRoot theRoot)
         {
             ExtraStuff convertTempTo = new ExtraStuff();
 
@@ -138,6 +134,8 @@ namespace Api_Practice
 
                 Console.WriteLine("Weather outside is: {0} °F", fahrenheit);
                 Console.WriteLine("Temperature min: {0} °F. Temperature max: {1} °F", convertTempTo.Fahrenheit(theRoot.main.temp_min), convertTempTo.Fahrenheit(theRoot.main.temp_max));
+
+                return fahrenheit;
             }
 
             // Celcius
@@ -149,6 +147,9 @@ namespace Api_Practice
 
                 Console.WriteLine("Weather outside is: {0}°", celcius);
                 Console.WriteLine("Temperature min: {0}°. Temperature max: {1}°", convertTempTo.Celcius(theRoot.main.temp_min), convertTempTo.Celcius(theRoot.main.temp_max));
+
+                return celcius;
+
             }
             // Kelvin
             if (choice.Equals("k"))
@@ -157,6 +158,13 @@ namespace Api_Practice
 
                 Console.WriteLine("Weather outside is: {0}", kelvin);
                 Console.WriteLine("Temperature min: {0}. Temperature max: {1}", theRoot.main.temp_min, theRoot.main.temp_max);
+
+                return kelvin;
+
+            }
+            else
+            {
+                return 0.0;
             }
         }
         public static Stream GenerateStreamFromString(string s)

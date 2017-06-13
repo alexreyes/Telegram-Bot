@@ -10,3 +10,11 @@ C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Pract
 C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\obj\Debug\Api Practice.csprojResolveAssemblyReference.cache
 C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\obj\Debug\Api Practice.exe
 C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\obj\Debug\Api Practice.pdb
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\EntityFramework.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\System.Data.SQLite.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\EntityFramework.xml
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alex.reyes\Documents\Visual Studio 2015\Projects\Api Practice\Api Practice\bin\Debug\System.Data.SQLite.xml

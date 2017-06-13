@@ -11,10 +11,14 @@ namespace Api_Practice
         string chatId = "164850555";
         static void Main(string[] args)
         {
+            Database database = new Database();
+            WeatherApiClient weatherClient = new WeatherApiClient();
 
             testApiAsync();
+            weatherClient.GetWeatherForecast();
+            Console.WriteLine(weatherClient.getTemp());
             Console.ReadLine();
-    
+
         }
         static async void testApiAsync()
         {

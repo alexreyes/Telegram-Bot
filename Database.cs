@@ -6,16 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Api_Practice
+{ 
     class Database
     {
         SQLiteConnection m_dbConnection;
 
         public Database()
         {
-            //createNewDatabase();
+            createNewDatabase();
             connectToDatabase();
-            //createTable();
-            //fillTable();
+            createTable();
+            fillTable();
             //deleteRow();
             printTableResults();
         }
