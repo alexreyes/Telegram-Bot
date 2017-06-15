@@ -81,6 +81,8 @@
   <ItemGroup>
     <Compile Include="AccessWebPage.cs" />
     <Compile Include="ConverTo.cs" />
+    <Compile Include="LocationClient.cs" />
+    <Compile Include="LocationData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeatherApiClient.cs" />

@@ -10,18 +10,13 @@ using System.Text.RegularExpressions;
 
 namespace Api_Practice
 {
-    class WeatherApiClient
+    class LocationClient
     {
-        private string theZipCode = "";
-
-        public string getTemp(string zipCode) {
-            theZipCode = zipCode;
-
-            string jsonCurrentWeather = AccessWebPage.HttpGet("http://api.openweathermap.org/data/2.5/weather?q=" + zipCode + "&APPID=47992ad1b3261b707350bf13aac83023");
-            WeatherData.CurrentRoot root = new WeatherData.CurrentRoot();
+        public string getLocation(string zipCode)
+        {
+            string jsonCurrentWeather = AccessWebPage.HttpGet("http://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&sensor=true");
+            LocationData.RootObject root = new LocationData.RootObject();
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(WeatherData.CurrentRoot));
-
-            WeatherData.CurrentRoot tempRoot = new WeatherData.CurrentRoot();
 
             String returnValue = "";
 
@@ -29,8 +24,8 @@ namespace Api_Practice
             {
                 try
                 {
-                    tempRoot = (WeatherData.CurrentRoot)ser.ReadObject(s);
-                    returnValue = "" + returnWeatherOutside(tempRoot);
+                    root = (LocationData.RootObject)ser.ReadObject(s);
+                    returnValue = "" + returnLocation(root);
 
                 }
                 catch (Exception)
@@ -40,23 +35,12 @@ namespace Api_Practice
             }
             return returnValue;
         }
-
-        public string getTemp() {
-
-            return "" + getTemp("17601");
-        }
-
-        public string returnWeatherOutside(WeatherData.CurrentRoot theRoot)
+        public string returnLocation(LocationData.RootObject theRoot)
         {
-            ConvertTo convertTempTo = new ConvertTo();
+            //string location = theRoot.results.
+            return "";
 
-            double kelvin = theRoot.main.temp;
-            double fahrenheit = convertTempTo.Fahrenheit(kelvin);
-            string weatherOutsideF = ("Weather in " + theZipCode+ " is: " + (int) fahrenheit + "°F");
-
-            return weatherOutsideF;
         }
-
         public static Stream GenerateStreamFromString(string s)
         {
             MemoryStream stream = new MemoryStream();

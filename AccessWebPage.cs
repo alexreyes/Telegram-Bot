@@ -17,11 +17,16 @@ namespace Api_Practice
             //this is like using the new command but creating the instance using an abstract and making it specific
             HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
             string result = null;
-            using (HttpWebResponse resp = req.GetResponse() as HttpWebResponse)
+            try
             {
-                StreamReader reader = new StreamReader(resp.GetResponseStream());
-                result = reader.ReadToEnd();
+
+                using (HttpWebResponse resp = req.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(resp.GetResponseStream());
+                    result = reader.ReadToEnd();
+                }
             }
+            catch (Exception) { }
             return result;
         }
     }
