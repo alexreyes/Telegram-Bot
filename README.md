@@ -2,7 +2,7 @@
 
 Pretty useless bot. Only remotely useful feature is the /weather command. I just wanted to see if I could make a C# telegram bot for fun.
 
-#List of Commands: 
+## List of Commands: 
 
 /inline   - send inline keyboard
 /keyboard - send custom keyboard
